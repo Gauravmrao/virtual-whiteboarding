@@ -120,9 +120,9 @@ while True:
 
         
             
-    # overlay the drawing canvas onto the video output
+    # overlay the drawing canvas onto the video output with a mask over the canvas
     imgGrey = cv2.cvtColor(imgCanvas, cv2.COLOR_BGR2GRAY) 
-    _, imgInv = cv2.threshold(imgGrey, 50, 255, cv2.THRESH_BINARY_INV)
+    _, imgInv = cv2.threshold(imgGrey, 0, 255, cv2.THRESH_BINARY_INV)
     imgInv = cv2.cvtColor(imgInv, cv2.COLOR_GRAY2BGR)
     img = cv2.bitwise_and(img, imgInv)
     img = cv2.bitwise_or(img, imgCanvas)
