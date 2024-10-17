@@ -20,9 +20,11 @@ currentHeader = headers[0]
 # set up the color selection
 currentColor = (0, 0, 255)  # default is red
 markerSize = 15
+prevPoint = (-1, -1)
 
 # set up the hand detector
 detector = hand.handDetector(detectionConfidence=0.85)
+imgCanvas = np.zeros((720, 1280, 3), np.uint8)
 
 
 while True:
@@ -80,7 +82,6 @@ while True:
 
         # color selection mode - selecting the color
         if sameSide((indKnuckleX, indKnuckleY), (midKnuckleX, midKnuckleY), (indexX, indexY), (middleX, middleY)):
-            cv2.circle(img, (indexX, indexY), markerSize, currentColor, 5)
             if indexY < 120:
                 if indexX >= 425 and indexX <= 530:
                     currentHeader = headers[0]  # red
@@ -96,27 +97,35 @@ while True:
                     markerSize = 15
                 if indexX >= 915 and indexX <= 1020:
                     currentHeader = headers[3]  # eraser
-                    currentColor = (255, 255, 255)
+                    currentColor = (0, 0, 0)
                     markerSize = 40
+            cv2.circle(img, (indexX, indexY), markerSize, currentColor, 5)
+            prevPoint = (indexX, indexY)
         
         # drawing mode
         else:
             cv2.circle(img, (indexX, indexY), markerSize, currentColor, cv2.FILLED)
-            ...
+
+            # the program has just begun
+            if prevPoint == (-1, -1):
+                prevPoint = (indexX, indexY)
+
+
+            cv2.line(img, prevPoint, (indexX, indexY), currentColor, markerSize)
+            cv2.line(imgCanvas, prevPoint, (indexX, indexY), currentColor, markerSize)
+            prevPoint = (indexX, indexY)
 
 
         
 
-
-
-
-
-        distance = (((middleX - indexX) ** 2) + ((middleY - indexY) ** 2)) ** 0.5
-        #cv2.putText(img, f'{str(int(distance))}', (indexX, indexY), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2)
-
         
             
-            
+    # overlay the drawing canvas onto the video output
+    imgGrey = cv2.cvtColor(imgCanvas, cv2.COLOR_BGR2GRAY) 
+    _, imgInv = cv2.threshold(imgGrey, 50, 255, cv2.THRESH_BINARY_INV)
+    imgInv = cv2.cvtColor(imgInv, cv2.COLOR_GRAY2BGR)
+    img = cv2.bitwise_and(img, imgInv)
+    img = cv2.bitwise_or(img, imgCanvas)
             
 
 
