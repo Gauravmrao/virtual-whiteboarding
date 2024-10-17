@@ -45,7 +45,6 @@ while True:
         indexY = landmarks[8][2]
         middleX = landmarks[12][1]
         middleY = landmarks[12][2]
-        #cv2.putText(img, f'{str(int(indexX))}', (indexX, indexY), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2)
 
         # knuckles
         indKnuckleX = landmarks[6][1]
@@ -65,7 +64,6 @@ while True:
         # Calculate the cross product of two 2D vectors v1 and v2
         def cross_product(v1, v2):
             return v1[0] * v2[1] - v1[1] * v2[0]
-
         # Check if points P and Q are on the same side of the line created by the segment AB.
         def sameSide(A, B, P, Q):
             # Vector AB
@@ -98,19 +96,21 @@ while True:
                 if indexX >= 915 and indexX <= 1020:
                     currentHeader = headers[3]  # eraser
                     currentColor = (0, 0, 0)
-                    markerSize = 40
-            cv2.circle(img, (indexX, indexY), markerSize, currentColor, 5)
+                    markerSize = 60
+            if currentColor == (0, 0, 0):
+                cv2.circle(img, (indexX, indexY), markerSize // 2, currentColor, 3)
+            else:
+                cv2.circle(img, (indexX, indexY), markerSize, currentColor, 3)
             prevPoint = (indexX, indexY)
         
-        # drawing mode
+        # drawing mode - draw onto the canvas
         else:
-            cv2.circle(img, (indexX, indexY), markerSize, currentColor, cv2.FILLED)
-
-            # the program has just begun
             if prevPoint == (-1, -1):
                 prevPoint = (indexX, indexY)
-
-
+            if currentColor == (0, 0, 0):
+                cv2.circle(img, (indexX, indexY), markerSize // 2, currentColor, cv2.FILLED)
+            else:
+                cv2.circle(img, (indexX, indexY), markerSize, currentColor, cv2.FILLED)
             cv2.line(img, prevPoint, (indexX, indexY), currentColor, markerSize)
             cv2.line(imgCanvas, prevPoint, (indexX, indexY), currentColor, markerSize)
             prevPoint = (indexX, indexY)
