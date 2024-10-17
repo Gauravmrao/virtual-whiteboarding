@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import os
-import HandTrackingModule as hand # TODO: import the hand tracking module separately from its own folder
+import HandTrackingModule as hand
 
 
 # define the Video input
