@@ -4,7 +4,7 @@
 This project is a **Virtual Whiteboarding** application using a webcam and hand tracking technology. The user can select colors, draw on a canvas, and erase sections by interacting with a virtual interface. The core functionality is implemented using OpenCV for image processing and Mediapipe for gesture detection.
 
 
-## Features
+## Key Features
 - **Hand Gesture Recognition**: Detects hand gestures using the index and middle fingers to switch between drawing mode and color selection mode.
 - **Drawing Interface**: Draws lines or circles on the canvas in different colors based on user input.
 - **Color Selection**: Choose between multiple colors (Red, Green, Blue) or switch to an eraser via hand gestures.
