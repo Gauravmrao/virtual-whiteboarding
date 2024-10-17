@@ -1,7 +1,7 @@
 # Virtual Whiteboarding with Computer Vision
 
 ## Project Overview
-This project is a **Virtual Whiteboarding** application using a webcam and hand tracking technology. The user can select colors, draw on a canvas, and erase sections by interacting with a virtual interface. The core functionality is implemented using OpenCV for image processing and a custom hand tracking module for gesture detection.
+This project is a **Virtual Whiteboarding** application using a webcam and hand tracking technology. The user can select colors, draw on a canvas, and erase sections by interacting with a virtual interface. The core functionality is implemented using OpenCV for image processing and Mediapipe for gesture detection.
 
 
 ## Features
