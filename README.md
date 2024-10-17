@@ -9,16 +9,10 @@ This project is a **Virtual Paint Application** using a webcam and hand tracking
 - **Color Selection**: Choose between multiple colors (Red, Green, Blue) or switch to an eraser via hand gestures.
 - **Real-time Interaction**: Displays the drawing canvas in real-time, merging the webcam feed and the virtual canvas.
 
-## Requirements
-- Python 3.x
-- OpenCV
-- NumPy
-- A custom hand tracking module (HandTrackingModule)
-- A working webcam
-
 ## Installation and Activation
+**Note:** This program requires a working webcam.
 
-1. Clone the repository:
+1. Clone the repository and navigate to the associated directory:
    ```bash
    git clone <repository-url>
    cd <repository-folder>
@@ -29,10 +23,9 @@ This project is a **Virtual Paint Application** using a webcam and hand tracking
    ```bash
     python virtual_paint.py
 
-
-# How to Use
+## How to Use
 - Hold your index and middle fingers up to enter *selection* mode. In this state, you will be able to select your marker color by moving your fingers together to the desired color at the top of the screen.
-- By putting your middle finger down, you will enter *drawing* mode, in which you can draw on the screen using your index finger in the chosen color.
-- If you wish to change colors, you will have to enter selection mode again and select your new color.
+- By putting your middle finger down, you will enter *drawing* mode, in which you can draw on the screen in the chosen color using your index finger.
+- If you wish to change colors, you will have to enter *selection* mode again and select your new color.
 - You can also **erase** from your drawing by selecting the eraser from the top of the screen when in *selection* mode, and then drawing with the eraser over the screen in *drawing* mode.
 **Tip:** You can "lift" your marker to stop drawing and begin drawing on another part of the screen by alternating between the *selection* and "drawing* modes.
