@@ -5,8 +5,8 @@ This project is a **Virtual Whiteboarding** application using a webcam and hand 
 
 
 ## Key Features
+- **Drawing Interface**: Draws on the video output display canvas by following the user's hand motions.
 - **Hand Gesture Recognition**: Detects hand gestures using the index and middle fingers to switch between drawing mode and color selection mode.
-- **Drawing Interface**: Draws lines or circles on the canvas in different colors based on user input.
 - **Color Selection**: Choose between multiple colors (Red, Green, Blue) or switch to an eraser via hand gestures.
 - **Real-time Interaction**: Displays the drawing canvas in real-time, merging the webcam feed and the virtual canvas.
 
